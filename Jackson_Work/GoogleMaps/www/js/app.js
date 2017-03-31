@@ -45,6 +45,7 @@ example.controller('MapController', function($scope, $ionicLoading) {
                map: map,
                title: "My Location"
            });
+           $scope.position = myLocation.position;
        });
 
        $scope.map = map;
