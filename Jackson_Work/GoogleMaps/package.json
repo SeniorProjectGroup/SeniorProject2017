@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "description": "GoogleMaps: An Ionic project",
   "scripts": {
-    "build": "bower install; ionic state reset"
+    "postinstall": "bower install; ionic state restore"
   },
   "dependencies": {
     "gulp": "^3.5.6",
