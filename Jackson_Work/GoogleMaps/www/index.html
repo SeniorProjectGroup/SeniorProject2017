@@ -21,7 +21,8 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <!-- IF usils
+       Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
@@ -36,15 +37,42 @@
   </head>
   <body ng-app="starter">
 
-    <ion-pane>
+    <ion-pane >
       <ion-header-bar class="bar-stable">
         <h1 class="title">Google Maps</h1>
+
       </ion-header-bar>
       <ion-content ng-controller="MapController">
-        <div id="map" data-tap-disabled="true"></div>
-        <p>Hello World</p>
+        <div id="map" data-tap-disabled="true">
+        </div>
+
       </ion-content>
+
+      <ion-footer-bar ng-controller="MapController">
+          <p> {{position}} hello</p>
+      </ion-footer-bar>
     </ion-pane>
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCW3HOAILFZkexZHlFwI08bzRVBKdtm29k",
+    authDomain: "project-4297912020037364891.firebaseapp.com",
+    databaseURL: "https://project-4297912020037364891.firebaseio.com",
+    projectId: "project-4297912020037364891",
+    storageBucket: "project-4297912020037364891.appspot.com",
+    messagingSenderId: "355622276335"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<!-- Angular JS provided by firebase github
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+AngularFire is the officially supported AngularJS binding for Firebase. 
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+ -->
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCQs9rv6LRAvSFuiANCgn2Tw7WheCxxxXo&sensor=true">
     </script>
   </body>
