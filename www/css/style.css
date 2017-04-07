@@ -21,6 +21,11 @@
      width: 100%;
 }
 
+.map
+{
+     width: 50%;
+}
+
 .innerdiv
 {
      border: solid;
