@@ -37,6 +37,8 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/login.js"></script>
+
   </head>
   <body ng-app="starter">
 
@@ -46,7 +48,6 @@
       </ion-header-bar>
       <ion-content >
         <div id="map" data-tap-disabled="true"></div>
-        <p>Hello World</p>
       </ion-content>
     </ion-pane>
     <ion-footer-bar class="bar bar-footer bar-teal">
@@ -60,6 +61,9 @@
     </ion-footer-bar>
 
     <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase-database.js"></script>
 <script>
   // Initialize Firebase
   var config = {
@@ -73,12 +77,12 @@
   firebase.initializeApp(config);
 </script>
 
-<!-- Angular JS provided by firebase github
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+ <!-- Angular JS provided by firebase github -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script> -->
 
-AngularFire is the officially supported AngularJS binding for Firebase. 
-<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
- -->
+<!-- AngularFire is the officially supported AngularJS binding for Firebase. -->
+<!-- <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script> -->
+
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCQs9rv6LRAvSFuiANCgn2Tw7WheCxxxXo&sensor=true">
     </script>
   </body>
