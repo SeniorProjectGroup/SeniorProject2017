@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var example =angular.module('starter', ['ionic'])
+var app = angular.module('tracker', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -25,7 +25,7 @@ var example =angular.module('starter', ['ionic'])
   });
 })
 
-example.controller('MapController', function($scope, $ionicLoading) {
+app.controller('MapController', function($scope, $ionicLoading) {
 
   google.maps.event.addDomListener(window, 'load', function() {
        var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
