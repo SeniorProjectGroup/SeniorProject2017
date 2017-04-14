@@ -4,12 +4,9 @@ function onDeviceReady() {
     var watchID;
     $('#start').click(function(){
       watchID = navigator.geolocation.watchPosition(onSuccess, onError, { maximumAge: 3000, timeout: 10000, enableHighAccuracy: true  });
-      console.log("WatchID set to " + watchID);
     });
     $('#stop').click(function(){
-      console.log("Trying to stop " + watchID);
       if(typeof watchID !== "undefined"){
-        console.log("Success: stopping " + watchID);
         navigator.geolocation.clearWatch(watchID);
       };
     })
