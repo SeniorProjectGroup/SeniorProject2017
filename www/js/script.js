@@ -1,4 +1,4 @@
-document.addEventListener("deviceready", onDeviceReady, false);
+/*document.addEventListener("deviceready", onDeviceReady, false);
 
 
 var Latitude = 0;
@@ -129,4 +129,4 @@ function watchMapPosition() {
   return navigator.geolocation.watchPosition
   (onMapWatchSuccess, onMapError, { enableHighAccuracy: true });
 
-}
+}*/
