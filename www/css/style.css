@@ -8,12 +8,6 @@
   height: 100%;
 }
 
-
-.bar-teal
-{
-     background-color: #049586;
-}
-
 .div-teal
 {
      display: flex;
@@ -21,19 +15,12 @@
      width: 100%;
 }
 
-.map
+.functionbutton:hover
 {
-     width: 50%;
+     background-color: lightgrey;
 }
 
-.innerdiv
+.ionitem:hover
 {
-     border: solid;
-     display: inline-block;
-}
-
-.testbutton
-{
-     margin-left: 30%;
-     margin-right: auto;
+     background-color: lightgrey;
 }
