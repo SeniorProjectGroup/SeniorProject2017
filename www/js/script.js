@@ -3,7 +3,7 @@
 $(document).ready(function(){
 
   var database = firebase.database();
-
+    var user;
   $('#start').click(function(){navigator.geolocation.watchPosition(onSuccess, onError)});
 
     var onSuccess = function(position) {
@@ -17,8 +17,9 @@ $(document).ready(function(){
               'Timestamp: '         + position.timestamp                + '\n');
 
 
+              user = firebase.auth().currentUser.uid;
               var Trip = database.ref(position.timestamp);
-              database.ref(position.timestamp).set({"Latitude":position.coords.latitude, "Longitude":position.coords.longitude, "Timestamp":position.timestamp});
+              database.ref(user).set({"Latitude":position.coords.latitude, "Longitude":position.coords.longitude, "Timestamp":position.timestamp});
     };
 
     // onError Callback receives a PositionError object
@@ -27,4 +28,26 @@ $(document).ready(function(){
         console.log('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
+    $('#stop').click(function(){
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Google Access Token. You can use it to access the Google API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  user = result.user;
+  // ...
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  // ...
+  console.log("Error " + errorCode + " " + errorMessage);
+});
+    });
+
 })
