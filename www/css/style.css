@@ -15,12 +15,29 @@
      width: 100%;
 }
 
-.functionbutton:hover
+.active
 {
-     background-color: lightgrey;
+     background-color: grey;
+     color: white;
+     border-radius: 5px;
 }
 
-.ionitem:hover
+.inactivediv
 {
-     background-color: lightgrey;
+     border-radius: 5px;
+     padding: 10px;
+
+}
+
+.activediv
+{
+     background-color: grey;
+     color: white;
+     border-radius: 5px;
+     padding: 10px;
+}
+
+.ionitem
+{
+     padding: 00px;
 }

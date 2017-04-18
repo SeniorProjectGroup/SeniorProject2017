@@ -37,6 +37,8 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/script.js"></script>
+
+    <script src="js/buttonscripts.js"></script>
   </head>
   <body ng-app="starter">
 
@@ -54,12 +56,14 @@
                        </ion-nav-buttons>
                      </ion-nav-bar>
 
+
                      <ion-pane ng-controller="MapController">
                           <ion-content>
                             <div id="map" data-tap-disabled="true"></div>
                             <p>Hello World</p>
                           </ion-content>
                     </ion-pane>
+
                    </ion-side-menu-content>
 
                    <ion-side-menu side="left">
@@ -69,13 +73,13 @@
                      <ion-content>
                        <ion-list>
                          <ion-item class = "ionitem">
-                           Walking
+                              <div id = "walking" onclick = "PressWalking()" class = "inactivediv">Walking</div>
                          </ion-item>
                          <ion-item class = "ionitem">
-                           Bicycling
+                           <div id = "bicycling" onclick = "PressBicycling()" class = "inactivediv">Bicycling</div>
                          </ion-item>
                          <ion-item class = "ionitem">
-                           Driving
+                           <div id = "driving" onclick = "PressDriving()" class = "inactivediv">Driving</div>
                          </ion-item>
                        </ion-list>
                      </ion-content>
@@ -87,12 +91,12 @@
 
 
         <ion-footer-bar class="bar bar-footer bar-stable">
-            <div class = "div-buttons">
-                <button class = "button functionbutton" id="start">Start</button>
+            <div class = "div-buttons" id = "test">
+                <button class = "button" id = "start" onclick = "PressStartButton()">Start</button>
 
-                <button class = "button functionbutton">Pause</button>
+                <button class = "button" id = "pause" onclick = "PressPauseButton()">Pause</button>
 
-                <button class = "button functionbutton">Stop</button>
+                <button class = "button" id = "stop" onclick = "PressStopButton()">Stop</button>
             </div>
         </ion-footer-bar>
 
