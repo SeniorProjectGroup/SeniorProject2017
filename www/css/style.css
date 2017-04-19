@@ -8,32 +8,36 @@
   height: 100%;
 }
 
-
-.bar-teal
-{
-     background-color: #049586;
-}
-
-.div-teal
+.div-buttons
 {
      display: flex;
      justify-content: space-between;
      width: 100%;
 }
 
-.map
+.active
 {
-     width: 50%;
+     background-color: grey;
+     color: white;
+     border-radius: 5px;
 }
 
-.innerdiv
+.inactivediv
 {
-     border: solid;
-     display: inline-block;
+     border-radius: 5px;
+     padding: 10px;
+
 }
 
-.testbutton
+.activediv
 {
-     margin-left: 30%;
-     margin-right: auto;
+     background-color: grey;
+     color: white;
+     border-radius: 5px;
+     padding: 10px;
+}
+
+.ionitem
+{
+     padding: 00px;
 }
