@@ -2,6 +2,7 @@ $(document).ready(function(){
 
   var database = firebase.database();
   var user;
+  var Speed;
 
   $('#start').click(function(){navigator.geolocation.watchPosition(onSuccess, onError)});
 
@@ -16,7 +17,14 @@ $(document).ready(function(){
     'Timestamp: '         + position.timestamp                + '\n');
 
         user = firebase.auth().currentUser.uid;
-        database.ref(user + "/Timestamp/"+ position.timestamp).update({"Latitude":position.coords.latitude, "Longitude":position.coords.longitude});
+        if(typeof position.coords.speed === "undefined"){
+          Speed = 0;
+        }
+        else{
+          Speed = position.coords.speed;
+        }
+        database.ref(user + "/Timestamp/"+ position.timestamp).update({"Latitude":position.coords.latitude,
+         "Longitude":position.coords.longitude, "Speed":Speed});
   };
   // onError Callback receives a PositionError object
   //
