@@ -40,21 +40,23 @@
     <script src="js/buttonscripts.js"></script>
   </head>
   <body ng-app="starter">
-
-
-
                 <ion-side-menus enable-menu-with-back-views="false">
                    <ion-side-menu-content>
-                     <ion-nav-bar class="bar-stable">
-                       <ion-nav-back-button>
-                       </ion-nav-back-button>
+                     <ion-nav-bar class="bar-stable navbar">
+                          <ion-nav-back-button>
+                          </ion-nav-back-button>
 
-                       <ion-nav-buttons side="left">
-                         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-                         </button>
-                       </ion-nav-buttons>
-                     </ion-nav-bar>
+                          <ion-nav-buttons side="left">
+                              <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                              </button>
+                         </ion-nav-buttons>
+                    </ion-nav-bar>
 
+                    <ion-header-bar class="bar-stable" align-title = "center">
+                        <h1 class = "title">PacRT Trip Log</h1>
+
+                        <button class = "button">Sign In</button>
+                    </ion-header-bar>
 
                      <ion-pane ng-controller="MapController">
                           <ion-content>
@@ -83,9 +85,6 @@
                      </ion-content>
                    </ion-side-menu>
                  </ion-side-menus>
-
-
-
 
 
         <ion-footer-bar class="bar bar-footer bar-stable">
