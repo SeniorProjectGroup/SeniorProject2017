@@ -39,5 +39,10 @@
 
 .ionitem
 {
-     padding: 00px;
+     padding: 0px;
+}
+
+.test
+{
+     width: 50px;
 }
