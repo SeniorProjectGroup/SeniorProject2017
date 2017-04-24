@@ -4,6 +4,8 @@ $(document).ready(function(){
   var user;
   var Speed;
 
+  user = prompt("Enter Username", "Username");
+
   $('#start').click(function(){navigator.geolocation.watchPosition(onSuccess, onError)});
 
   var onSuccess = function(position) {
@@ -17,7 +19,7 @@ $(document).ready(function(){
     'Timestamp: '         + position.timestamp                + '\n');
 
         user = firebase.auth().currentUser.uid;
-        if(typeof position.coords.speed === "undefined"){
+        if(isNaN(position.coords.speed)){
           Speed = 0;
         }
         else{
