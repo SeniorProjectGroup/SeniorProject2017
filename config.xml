@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.googlemaps813197" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.github.SeniorProjectGroup" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <allow-navigation href="*"/>
   <allow-navigation href="http://172.30.6.128:8100"/>
-  <name>GoogleMaps</name>
+  <name>SeniorProject</name>
   <description>
-        An Ionic Framework and Cordova project.
+        Our senior project app that tracks your current location and categorizes you trips into categories.
     </description>
-  <author email="you@example.com" href="http://example.com/">
-      Your Name Here
+  <author email="AndrewWichmann@siu.edu" href="https://Andrew-Wichmann.github.io">
+      Andrew Wichmann
+    </author>
+  <author email="jones.jackson13@siu.edu">
+      Jackson Jones
+    </author>
+  <author email="johnheathwoods@siu.edu">
+      John Woods
     </author>
   <content src="index.html"/>
   <access origin="*"/>
