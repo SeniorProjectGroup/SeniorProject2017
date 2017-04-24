@@ -3,7 +3,11 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var example =angular.module('starter', ['ionic'])
+var Latitude = 0;
+var Longitude = 0;
+var watchID;
+var marker;
+var app = angular.module('tracker', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -25,30 +29,101 @@ var example =angular.module('starter', ['ionic'])
   });
 })
 
-example.controller('MapController', function($scope, $ionicLoading) {
-
+app.controller('MapController', function($scope, $ionicLoading) {
   google.maps.event.addDomListener(window, 'load', function() {
-       var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
-
-       var mapOptions = {
-           center: myLatlng,
-           zoom: 16,
-           mapTypeId: google.maps.MapTypeId.ROADMAP
-       };
-
-       var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-       navigator.geolocation.getCurrentPosition(function(pos) {
-           map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-           var myLocation = new google.maps.Marker({
-               position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-               map: map,
-               title: "My Location"
-           });
-           $scope.position = myLocation.position;
-       });
-
-       $scope.map = map;
-   });
-
+    getMapLocation();
+    
+    $('#start').click(function(){
+      console.log("Start");
+      watchID = watchMapPosition();
+    });
+    $('#stop').click(function(){
+      console.log("Attemping stop");
+      if(typeof watchID !== "undefined"){
+        console.log("Stopped");
+        navigator.geolocation.clearWatch(watchID);
+      };
+    })
+  })
 });
+
+// Get geo coordinates
+
+function getMapLocation() {
+  
+  navigator.geolocation.getCurrentPosition
+  (onMapSuccess, onMapError, { enableHighAccuracy: true });
+}
+
+// Success callback for get geo coordinates
+
+var onMapSuccess = function (position) {
+  
+  Latitude = position.coords.latitude;
+  Longitude = position.coords.longitude;
+  
+  getMap(Latitude, Longitude);
+  
+}
+
+function getMap(latitude, longitude) {
+  
+  var mapOptions = {
+    center: new google.maps.LatLng(0, 0),
+    zoom: 15,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  
+  
+  var latLong = new google.maps.LatLng(latitude, longitude);
+  
+  marker = new google.maps.Marker({
+    position: latLong
+  });
+  
+  marker.setMap(map);
+  map.setCenter(marker.getPosition());
+}
+
+
+function watchMapPosition() {
+
+  return navigator.geolocation.watchPosition
+  (onMapWatchSuccess, onMapError, { enableHighAccuracy: true });
+
+}
+
+// Success callback for watching your changing position
+
+var onMapWatchSuccess = function (position) {
+  console.log('Latitude: '          + position.coords.latitude          + '\n' +
+  'Longitude: '         + position.coords.longitude         + '\n' +
+  'Altitude: '          + position.coords.altitude          + '\n' +
+  'Accuracy: '          + position.coords.accuracy          + '\n' +
+  'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+  'Heading: '           + position.coords.heading           + '\n' +
+  'Speed: '             + position.coords.speed             + '\n' +
+  'Timestamp: '         + position.timestamp                + '\n');
+  
+  var updatedLatitude = position.coords.latitude;
+  var updatedLongitude = position.coords.longitude;
+  
+  if (updatedLatitude != Latitude && updatedLongitude != Longitude) {
+    
+    Latitude = updatedLatitude;
+    Longitude = updatedLongitude;
+    var latLong = new google.maps.LatLng(Latitude, Longitude);
+    
+    marker.setPosition(latLong);
+    map.setCenter(marker.getPosition());
+  }
+}
+
+// Error callback
+
+function onMapError(error) {
+  console.log('code: ' + error.code + '\n' +
+  'message: ' + error.message + '\n');
+}
