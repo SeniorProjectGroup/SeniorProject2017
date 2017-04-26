@@ -7,6 +7,8 @@ var Latitude = 0;
 var Longitude = 0;
 var watchID;
 var marker;
+var database;
+var user;
 var app = angular.module('tracker', ['ionic'])
 
 .run(function($ionicPlatform) {
@@ -31,6 +33,8 @@ var app = angular.module('tracker', ['ionic'])
 
 app.controller('MapController', function($scope, $ionicLoading) {
   google.maps.event.addDomListener(window, 'load', function() {
+    user = prompt("Username");
+    database = firebase.database();
     getMapLocation();
     
     $('#start').click(function(){
@@ -111,7 +115,14 @@ var onMapWatchSuccess = function (position) {
   var updatedLongitude = position.coords.longitude;
   
   if (updatedLatitude != Latitude && updatedLongitude != Longitude) {
-    
+    if(isNaN(position.coords.speed)){
+      Speed = 0;
+    }
+    else{
+      Speed = position.coords.speed;
+    }
+    database.ref(user + "/Timestamp/"+ position.timestamp).update({"Latitude":position.coords.latitude,
+  "Longitude":position.coords.longitude, "Speed":Speed});
     Latitude = updatedLatitude;
     Longitude = updatedLongitude;
     var latLong = new google.maps.LatLng(Latitude, Longitude);
