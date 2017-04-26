@@ -121,8 +121,7 @@ var onMapWatchSuccess = function (position) {
     else{
       Speed = position.coords.speed;
     }
-    database.ref(user + "/Timestamp/"+ position.timestamp).update({"Latitude":position.coords.latitude,
-  "Longitude":position.coords.longitude, "Speed":Speed});
+    database.ref(user + "/Timestamp/"+ position.timestamp).update({"Latitude":position.coords.latitude, "Longitude":position.coords.longitude, "Speed":Speed});
     Latitude = updatedLatitude;
     Longitude = updatedLongitude;
     var latLong = new google.maps.LatLng(Latitude, Longitude);
