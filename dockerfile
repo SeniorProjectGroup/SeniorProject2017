@@ -12,7 +12,7 @@ RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ precise universe" >> /etc/apt
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 #RUN apt-get install -y nodejs=0.6.12~dfsg1-1ubuntu1
-EXPOSE 80
+EXPOSE 90
 
 
 RUN npm install --unsafe-perm=true
