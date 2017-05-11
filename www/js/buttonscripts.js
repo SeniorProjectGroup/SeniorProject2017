@@ -1,4 +1,5 @@
 var PauseBoolean = false;
+var modeTP = 0;
 
 function PressPauseButton()
 {
@@ -31,6 +32,7 @@ function PressStopButton()
 
 function PressWalking()
 {
+     modeTP = "Walking";
      document.getElementById("walking").className = "activediv";
      document.getElementById("bicycling").className = "inactivediv";
      document.getElementById("driving").className = "inactivediv";
@@ -38,6 +40,7 @@ function PressWalking()
 
 function PressBicycling()
 {
+     modeTP = "Bicycling";
      document.getElementById("walking").className = "inactivediv";
      document.getElementById("bicycling").className = "activediv";
      document.getElementById("driving").className = "inactivediv";
@@ -45,6 +48,7 @@ function PressBicycling()
 
 function PressDriving()
 {
+     modeTP = "Driving";
      document.getElementById("walking").className = "inactivediv";
      document.getElementById("bicycling").className = "inactivediv";
      document.getElementById("driving").className = "activediv";

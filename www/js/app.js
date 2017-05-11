@@ -1,5 +1,5 @@
 // Ionic Starter App
-
+//import modeTP from './buttonscripts.js'
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
@@ -10,6 +10,7 @@ var marker;
 var database;
 var user;
 var app = angular.module('tracker', ['ionic'])
+
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -36,7 +37,7 @@ app.controller('MapController', function($scope, $ionicLoading) {
     user = prompt("Username");
     database = firebase.database();
     getMapLocation();
-    
+
     $('#start').click(function(){
       console.log("Start");
       watchID = watchMapPosition();
@@ -54,7 +55,7 @@ app.controller('MapController', function($scope, $ionicLoading) {
 // Get geo coordinates
 
 function getMapLocation() {
-  
+
   navigator.geolocation.getCurrentPosition
   (onMapSuccess, onMapError, { enableHighAccuracy: true });
 }
@@ -62,31 +63,31 @@ function getMapLocation() {
 // Success callback for get geo coordinates
 
 var onMapSuccess = function (position) {
-  
+
   Latitude = position.coords.latitude;
   Longitude = position.coords.longitude;
-  
+
   getMap(Latitude, Longitude);
-  
+
 }
 
 function getMap(latitude, longitude) {
-  
+
   var mapOptions = {
     center: new google.maps.LatLng(0, 0),
     zoom: 15,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
-  
+
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  
-  
+
+
   var latLong = new google.maps.LatLng(latitude, longitude);
-  
+
   marker = new google.maps.Marker({
     position: latLong
   });
-  
+
   marker.setMap(map);
   map.setCenter(marker.getPosition());
 }
@@ -110,10 +111,10 @@ var onMapWatchSuccess = function (position) {
   'Heading: '           + position.coords.heading           + '\n' +
   'Speed: '             + position.coords.speed             + '\n' +
   'Timestamp: '         + position.timestamp                + '\n');
-  
+
   var updatedLatitude = position.coords.latitude;
   var updatedLongitude = position.coords.longitude;
-  
+
   if (updatedLatitude != Latitude && updatedLongitude != Longitude) {
     if(isNaN(position.coords.speed)){
       Speed = 0;
@@ -121,15 +122,17 @@ var onMapWatchSuccess = function (position) {
     else{
       Speed = position.coords.speed;
     }
-    database.ref(user + "/Timestamp/"+ position.timestamp).update({"Latitude":position.coords.latitude,
-  "Longitude":position.coords.longitude, "Speed":Speed});
+    database.ref(user + "/Transportation/" + modeTP + "/Timestamp/"+ position.timestamp).update({"Latitude":position.coords.latitude,
+    "Longitude":position.coords.longitude});
     Latitude = updatedLatitude;
     Longitude = updatedLongitude;
     var latLong = new google.maps.LatLng(Latitude, Longitude);
-    
+
     marker.setPosition(latLong);
     map.setCenter(marker.getPosition());
   }
+
+
 }
 
 // Error callback
