@@ -57,7 +57,7 @@ app.controller('MapController', function($scope, $ionicLoading) {
 function getMapLocation() {
 
   navigator.geolocation.getCurrentPosition
-  (onMapSuccess, onMapError, { enableHighAccuracy: true, timeout: 1000});
+  (onMapSuccess, onMapError, { enableHighAccuracy: true, timeout: 5000});
 }
 
 // Success callback for get geo coordinates
@@ -96,7 +96,7 @@ function getMap(latitude, longitude) {
 function watchMapPosition() {
 
   return navigator.geolocation.watchPosition
-  (onMapWatchSuccess, onMapError, { enableHighAccuracy: true, timeout: 1000 });
+  (onMapWatchSuccess, onMapError, { enableHighAccuracy: true, timeout: 5000 });
 
 }
 
