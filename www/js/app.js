@@ -123,7 +123,7 @@ var onMapWatchSuccess = function (position) {
       Speed = position.coords.speed;
     }
     database.ref(user + "/Transportation/" + modeTP + "/Timestamp/"+ position.timestamp).update({"Latitude":position.coords.latitude,
-    "Longitude":position.coords.longitude});
+    "Longitude":position.coords.longitude, "Speed":Speed});
     Latitude = updatedLatitude;
     Longitude = updatedLongitude;
     var latLong = new google.maps.LatLng(Latitude, Longitude);
